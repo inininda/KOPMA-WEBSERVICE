@@ -19,12 +19,11 @@ import java.util.logging.Logger;
 public class TestTambahBarang {
 
     public static void main(String[] args) {
-        try {
-          
-            String ID_Barang= "001";
-            String nama = "Vitacimin";
-            int stok = 5;
-            double harga=1500;
+        try {          
+            String ID_Barang= "002";
+            String nama = "Komix";
+            int stok = 50;
+            double harga = 1000;
             
             BarangHelper helper = new BarangHelper();
             helper.addNewBarang(ID_Barang,nama, stok, harga);

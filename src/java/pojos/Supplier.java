@@ -19,7 +19,7 @@ public class Supplier  implements java.io.Serializable {
 
      private String idSupplier;
      private String nama;
-     private long noTelp;
+     private String noTelp;
      private String alamat;
      private String username;
      private String password;
@@ -27,7 +27,7 @@ public class Supplier  implements java.io.Serializable {
     public Supplier() {
     }
 
-    public Supplier(String idSupplier, String nama, long noTelp, String alamat, String username, String password) {
+    public Supplier(String idSupplier, String nama, String noTelp, String alamat, String username, String password) {
        this.idSupplier = idSupplier;
        this.nama = nama;
        this.noTelp = noTelp;
@@ -59,12 +59,12 @@ public class Supplier  implements java.io.Serializable {
     }
 
     
-    @Column(name="noTelp", nullable=false, precision=13, scale=0)
-    public long getNoTelp() {
+    @Column(name="noTelp", nullable=false, length=20)
+    public String getNoTelp() {
         return this.noTelp;
     }
     
-    public void setNoTelp(long noTelp) {
+    public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
     }
 

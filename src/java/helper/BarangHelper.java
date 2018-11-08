@@ -22,7 +22,7 @@ public class BarangHelper {
     public List<Barang> getAllBarang() {
         List<Barang> result = null;
         Session session = KopmaHibernateUtil.getSessionFactory().openSession();
-        String query = "from Barang p";
+        String query = "from Barang b";
         Query q = session.createQuery(query);
         result = q.list();
         session.close();
