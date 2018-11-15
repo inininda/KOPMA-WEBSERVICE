@@ -11,8 +11,8 @@
         <property name="nama" type="string">
             <column name="nama" length="50" not-null="true" />
         </property>
-        <property name="noTelp" type="long">
-            <column name="noTelp" precision="13" scale="0" not-null="true" />
+        <property name="noTelp" type="string">
+            <column name="noTelp" length="20" not-null="true" />
         </property>
         <property name="alamat" type="string">
             <column name="alamat" length="100" not-null="true" />

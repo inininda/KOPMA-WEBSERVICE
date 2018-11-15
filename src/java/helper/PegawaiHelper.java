@@ -18,6 +18,7 @@ import util.KopmaHibernateUtil;
  * @author basisd10
  */
 public class PegawaiHelper {
+    
     public List<Pegawai> getAllPegawai() {
         List<Pegawai> result = null;
         Session session = KopmaHibernateUtil.getSessionFactory().openSession();

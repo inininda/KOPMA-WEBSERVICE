@@ -32,28 +32,28 @@ public class TEST {
             PembelianHelper blh = new PembelianHelper();
             SupplierHelper sh = new SupplierHelper();
 
-            bh.addNewBarang("002", "Mizone", 20, 4000);
+            //bh.addNewBarang("002", "Mizone", 20, 4000);
             //ph.addNewPegawai("PG01", "Galih", "0812345", "Jogja", "pegawai01", "mypassword");
-            blh.addNewPembelian("002", "TRX03934", 8000, "Lunas");
+            //blh.addNewPembelian("002", "TRX03934", 8000, "Lunas");
             sh.addNewSupplier("TK01", "PT. Miz0ne", "0854321", "Jakarta", "supplier01", "mypassword");
 
             List<Barang> lb = bh.getAllBarang();
-            //List<Pegawai> lp = ph.getAllPegawai();
+            List<Pegawai> lp = ph.getAllPegawai();
             List<Pembelian> lbl = blh.getAllPembelian();
             List<Supplier> ls = sh.getAllSupplier();
             
             String br = gson.toJson(lb);
-            //String pg = gson.toJson(lp);
+            String pg = gson.toJson(lp);
             String pb = gson.toJson(lbl);
             String sp = gson.toJson(ls);
-            
-            System.out.println(lb);
+//            
+            System.out.println(br);
             System.out.println("");
-            //System.out.println(lp);
+            System.out.println(pg);
             System.out.println("");
-            System.out.println(lbl);
+            System.out.println(pb);
             System.out.println("");
-            System.out.println(ls);
+            System.out.println(sp);
         } catch (Exception ex) {
             Logger.getLogger(TestTambahBarang.class.getName()).log(Level.SEVERE, null, ex);
         }
