@@ -55,7 +55,7 @@ public class TEST {
             System.out.println("");
             System.out.println(sp);
         } catch (Exception ex) {
-            Logger.getLogger(TestTambahBarang.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TEST.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
