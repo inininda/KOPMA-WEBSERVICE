@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 24, 2018 1:57:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Pegawai" table="Pegawai" catalog="db165314102" optimistic-lock="version">
+        <id name="idPegawai" type="string">
+            <column name="ID_Pegawai" length="9" />
+            <generator class="assigned" />
+        </id>
+        <property name="nama" type="string">
+            <column name="nama" length="50" not-null="true" />
+        </property>
+        <property name="noTelp" type="string">
+            <column name="noTelp" length="20" not-null="true" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="alamat" length="100" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
