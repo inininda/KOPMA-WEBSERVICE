@@ -29,8 +29,8 @@ public class SupplierLoginResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(@QueryParam("email") String email, @QueryParam("password") String password) {
-        return new Gson().toJson(new SupplierHelper().login(email, password));
+    public String getJson(@QueryParam("username") String username, @QueryParam("password") String password) {
+        return new Gson().toJson(new SupplierHelper().login(username, password));
     }
 
     @PUT

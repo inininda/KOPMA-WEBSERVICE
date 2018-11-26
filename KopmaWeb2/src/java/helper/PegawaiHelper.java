@@ -38,12 +38,12 @@ public class PegawaiHelper {
         session.close();
     }
     
-    public Pegawai login(String email, String password) {
+    public Pegawai login(String username, String password) {
         Session session = KopmaHibernateUtil.getSessionFactory().openSession();
-        String q = "From Pegawai a where a.email=:email AND a.password =:password";
+        String q = "From Pegawai a where a.username=:username AND a.password =:password";
 
         Query query = session.createQuery(q);
-        query.setParameter("email", email);
+        query.setParameter("username", username);
         query.setParameter("password", password);
 
         return (Pegawai) query.uniqueResult();

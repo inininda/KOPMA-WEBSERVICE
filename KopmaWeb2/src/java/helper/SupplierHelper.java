@@ -32,12 +32,12 @@ public class SupplierHelper {
         session.close();
     }
     
-    public Supplier login(String email, String password) {
+    public Supplier login(String username, String password) {
         Session session = KopmaHibernateUtil.getSessionFactory().openSession();
-        String q = "From Supplier a where a.email=:email AND a.password =:password";
+        String q = "From Supplier a where a.username=:username AND a.password =:password";
 
         Query query = session.createQuery(q);
-        query.setParameter("email", email);
+        query.setParameter("username", username);
         query.setParameter("password", password);
 
         return (Supplier) query.uniqueResult();
