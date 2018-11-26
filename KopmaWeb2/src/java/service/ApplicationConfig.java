@@ -31,8 +31,10 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(service.BarangResource.class);
         resources.add(service.GenericResource.class);
+        resources.add(service.PegawaiLoginResource.class);
         resources.add(service.PegawaiResource.class);
         resources.add(service.PembelianResource.class);
+        resources.add(service.SupplierLoginResource.class);
         resources.add(service.SupplierResource.class);
     }
     

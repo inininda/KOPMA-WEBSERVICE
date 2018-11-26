@@ -37,4 +37,15 @@ public class PegawaiHelper {
         transaction.commit();
         session.close();
     }
+    
+    public Pegawai login(String email, String password) {
+        Session session = KopmaHibernateUtil.getSessionFactory().openSession();
+        String q = "From Pegawai a where a.email=:email AND a.password =:password";
+
+        Query query = session.createQuery(q);
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+
+        return (Pegawai) query.uniqueResult();
+    }
 }
