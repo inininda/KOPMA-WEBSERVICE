@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            /* style the container */
+            .container {
+                position: relative;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px 0 30px 0;
+            } 
+
+            /* style inputs and link buttons */
+            input,
+            .btn {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 4px;
+                margin: 5px 0;
+                opacity: 0.85;
+                display: inline-block;
+                font-size: 17px;
+                line-height: 20px;
+                text-decoration: none; /* remove underline from anchors */
+            }
+
+            input:hover,
+            .btn:hover {
+                opacity: 1;
+            }
+
+
+            /* style the submit button */
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+            /* Two-column layout */
+            .col {
+                float: left;
+                width: 50%;
+                margin: auto;
+                padding: 0 50px;
+                margin-top: 6px;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* vertical line */
+            .vl {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                border: 2px solid #ddd;
+                height: 240px;
+            }
+
+            /* text inside the vertical line */
+            .vl-innertext {
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #f1f1f1;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                padding: 8px 10px;
+            }
+
+            /* hide some text on medium and large screens */
+            .hide-md-lg {
+                display: none;
+            }
+
+            /* bottom container */
+            .bottom-container {
+                text-align: center;
+                background-color: #666;
+                border-radius: 0px 0px 4px 4px;
+            }
+
+            /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 650px) {
+                .col {
+                    width: 100%;
+                    margin-top: 0;
+                }
+                /* hide the vertical line */
+                .vl {
+                    display: none;
+                }
+                /* show the hidden text on small screens */
+                .hide-md-lg {
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .button {
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: white;
+                padding: 14px 36px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 17px;
+                margin: 4px 2px;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+                cursor: pointer;
+                width: 100%;
+            }
+            .button1 {
+                background-color: #4CAF50; 
+                color: white;
+            }
+
+            .button1:hover {
+                background-color: #e7e7e7;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div class="container">            
+                <div class="row">
+                    <div class="vl">
+                        <span class="vl-innertext">or</span>
+                    </div>
+
+                    <div class="col">
+                        <div class="hide-md-lg">            
+                        </div>
+                        <h4 style="text-align:left">Login Sebagai Pegawai</h4>
+                        <input type="text" id="usernamePegawai" placeholder="Username">
+                        <input type="password" id="passwordPegawai" placeholder="Password">
+                        <button class="button button1" onclick="loginPegawai()">Login</button>
+                    </div>
+                    <!--
+                                        <div class="col">
+                                            <div class="hide-md-lg">
+                                            </div>
+                                            <h4 style="text-align:left">Login Sebagai Supplier</h4>
+                                            <input type="text" name="usernameSupplier" placeholder="Username">
+                                            <input type="password" name="passwordSupplier" placeholder="Password">
+                                            <button class="button button1">Login</button>
+                                        </div>
+                    -->
+                </div>
+            </div>
+        </form>
+        
+        <div class="bottom-container">
+            <div class="row">
+                <div class="col">
+                    <a href="#" style="color:white" class="btn">Daftar Sebagai Pegawai</a>
+                </div>
+                <div class="col">
+                    <a href="#" style="color:white" class="btn">Daftar Sebagai Supplier</a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function loginPegawai() {
+                var username = usernamePegawai.value;
+                var password = passwordPegawai.value;
+                var url = 'http://202.94.83.190:8080/KopmaWeb2/webresources/Pegawai/login?username='+username+'&password='+password;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var user = JSON.parse(this.responseText);
+                        if (user !== null) {
+                            alert("Selamat Datang " + user.nama);
+                            open("pegawai.html");
+                        } else {
+                            alert("Login Gagal");
+                        }
+                    }
+                };
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+        </script>
+    </body>
+</html>
