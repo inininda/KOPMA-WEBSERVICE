@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="KopmaWeb2" default="default" basedir=".">
-    <description>Builds, tests, and runs the project KopmaWeb2.</description>
+<project name="KOPMA_Webservice" default="default" basedir=".">
+    <description>Builds, tests, and runs the project KOPMA_Webservice.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
