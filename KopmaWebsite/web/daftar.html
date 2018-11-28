@@ -255,11 +255,7 @@
                 xhr.send(html);
                 alert();
                 return false;
-            }
-            function alert(){
-                alert('Pendaftaran Berhasil, Silahkan Login');
-                var myWindow = window.open("login.html", "_self");
-            }
+            }            
             function daftarSupplier(form) {
                 var json = {
                     "idSupplier": "TK"+Math.floor(Math.random() * 100),
@@ -277,6 +273,12 @@
                 xhr.send(html);
                 alert();
                 return false;
+            }
+        </script>
+        <script>
+            function alert(){
+                alert('Pendaftaran Berhasil, Silahkan Login');
+                var myWindow = window.open("login.html", "_self");
             }
         </script>
         <script src="js/vendor/jquery-2.2.4.min.js"></script>
