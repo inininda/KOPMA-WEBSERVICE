@@ -172,10 +172,10 @@
         <div class="bottom-container">
             <div class="row">
                 <div class="col">
-                    <a href="#" style="color:white" class="btn" onclick="satu()">Login Sebagai Pegawai</a>
+                    <a href="#" style="color:white" class="btn" onclick="satu()">Daftar Sebagai Pegawai</a>
                 </div>
                 <div class="col">
-                    <a href="#" style="color:white" class="btn" onclick="dua()">Login Sebagai Supplier</a>
+                    <a href="#" style="color:white" class="btn" onclick="dua()">Daftar Sebagai Supplier</a>
                 </div>
             </div>
         </div>
@@ -187,24 +187,38 @@
         </script>            
         <div class="row">
             <div class="col">
-                <form id="pegawai">
+                <form id="pegawai" onsubmit="return daftarPegawai(this)" method="POST">
                     <div class="hide-md-lg">            
-                    </div>
-                    <h4 style="text-align:left">Login Sebagai Pegawai</h4>                    
+                    </div>  
+                    <h6 style="text-align:left">Nama</h6>
+                    <input type="text" id="namaPegawai" placeholder="Nama">
+                    <h6 style="text-align:left">No.Telp</h6>
+                    <input type="text" id="noTelpPegawai" placeholder="No. Telp">
+                    <h6 style="text-align:left">Alamat</h6>
+                    <input type="text" id="alamatPegawai" placeholder="Alamat">
+                    <h6 style="text-align:left">Username</h6>
                     <input type="text" id="usernamePegawai" placeholder="Username">
+                    <h6 style="text-align:left">Password</h6>
                     <input type="password" id="passwordPegawai" placeholder="Password">                    
-                    <button class="button button1" form="pegawai" onclick="loginPegawai()">Login</button>
+                    <button class="button button1" form="pegawai">Daftar</button>
                 </form>
             </div>
 
             <div class="col">
-                <form id="supplier">
-                    <div class="hide-md-lg">
-                    </div>
-                    <h4 style="text-align:left">Login Sebagai Supplier</h4>                    
+                <form id="supplier" onsubmit="return daftarSupplier(this)" method="POST">
+                    <div class="hide-md-lg">            
+                    </div>  
+                    <h6 style="text-align:left">Nama</h6>
+                    <input type="text" id="namaSupplier" placeholder="Nama">
+                    <h6 style="text-align:left">No.Telp</h6>
+                    <input type="text" id="noTelpSupplier" placeholder="No. Telp">
+                    <h6 style="text-align:left">Alamat</h6>
+                    <input type="text" id="alamatSupplier" placeholder="Alamat">
+                    <h6 style="text-align:left">Username</h6>
                     <input type="text" id="usernameSupplier" placeholder="Username">
+                    <h6 style="text-align:left">Password</h6>
                     <input type="password" id="passwordSupplier" placeholder="Password">                    
-                    <button class="button button1" form="supplier" onclick="loginSupplier()">Login</button>
+                    <button class="button button1" form="supplier">Daftar</button>
                 </form>
             </div>
         </div>        
@@ -224,43 +238,45 @@
                 document.getElementById("pegawai").style.display = "none";
                 document.getElementById("supplier").style.display = "block";
             }
-            function loginPegawai() {
-                var username = usernamePegawai.value;
-                var password = passwordPegawai.value;
-                var url = 'http://202.94.83.190:8080/KopmaWeb2/webresources/Pegawai/login?username=' + username + '&password=' + password;
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var user = JSON.parse(this.responseText);
-                        if (user !== null) {
-                            alert("Selamat Datang " + user.nama);
-                            var myWindow = window.open("pegawai.html", "_self");
-                        } else {
-                            alert("Login Gagal");
-                        }
-                    }
+            function daftarPegawai(form) {
+                var json = {
+                    "idPegawai": "PG"+Math.floor(Math.random() * 100),
+                    "nama": form.namaPegawai.value,
+                    "noTelp": form.noTelpPegawai.value,
+                    "alamat": form.alamatPegawai.value,
+                    "username": form.usernamePegawai.value,
+                    "password": form.passwordPegawai.value
                 };
-                xhttp.open("GET", url, true);
-                xhttp.send();
+                var html = JSON.stringify(json, 0, 100);
+                var Url = "http://202.94.83.190:8080/KopmaWeb2/webresources/Pegawai/addPegawai";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', Url, false);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);
+                alert();
+                return false;
             }
-            function loginSupplier() {
-                var username = usernameSupplier.value;
-                var password = passwordSupplier.value;
-                var url = 'http://202.94.83.190:8080/KopmaWeb2/webresources/Supplier/login?username=' + username + '&password=' + password;
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var user = JSON.parse(this.responseText);
-                        if (user !== null) {
-                            alert("Selamat Datang " + user.nama);
-                            var myWindow = window.open("supplier.html", "_self");
-                        } else {
-                            alert("Login Gagal");
-                        }
-                    }
+            function alert(){
+                alert('Pendaftaran Berhasil, Silahkan Login');
+                var myWindow = window.open("login.html", "_self");
+            }
+            function daftarSupplier(form) {
+                var json = {
+                    "idSupplier": "TK"+Math.floor(Math.random() * 100),
+                    "nama": form.namaSupplier.value,
+                    "noTelp": form.noTelpSupplier.value,
+                    "alamat": form.alamatSupplier.value,
+                    "username": form.usernameSupplier.value,
+                    "password": form.passwordSupplier.value
                 };
-                xhttp.open("GET", url, true);
-                xhttp.send();
+                var html = JSON.stringify(json, 0, 100);
+                var Url = "http://202.94.83.190:8080/KopmaWeb2/webresources/Supplier/addSupplier";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', Url, false);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);
+                alert();
+                return false;
             }
         </script>
         <script src="js/vendor/jquery-2.2.4.min.js"></script>
