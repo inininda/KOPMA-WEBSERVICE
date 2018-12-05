@@ -248,12 +248,12 @@
                     "password": form.passwordPegawai.value
                 };
                 var html = JSON.stringify(json, 0, 100);
-                var Url = "http://202.94.83.190:8080/KopmaWeb2/webresources/Pegawai/addPegawai";
+                var Url = "http://202.94.83.190:8080/KopmaNew/webresources/Pegawai/addPegawai";
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', Url, false);
-                xhr.setRequestHeader("Content-type", "application/json");
-                xhr.send(html);
                 alert();
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);                
                 return false;
             }            
             function daftarSupplier(form) {
@@ -266,12 +266,12 @@
                     "password": form.passwordSupplier.value
                 };
                 var html = JSON.stringify(json, 0, 100);
-                var Url = "http://202.94.83.190:8080/KopmaWeb2/webresources/Supplier/addSupplier";
+                var Url = "http://202.94.83.190:8080/KopmaNew/webresources/Supplier/addSupplier";
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', Url, false);
+                alert();
                 xhr.setRequestHeader("Content-type", "application/json");
                 xhr.send(html);
-                alert();
                 return false;
             }
         </script>
