@@ -233,30 +233,16 @@
                         "</td><td>" + arr[i].nama +
                         "</td><td>Rp" + arr[i].harga +
                         "</td><td>" + arr[i].stok +
-                        "</td><td><button onclick='test(this)'>Beli</button>" +
+                        "</td><td><button onclick=\"halo('"+arr[i].idBarang+"')\">Beli"+arr[i].idBarang+"</button>" +
                         "</td></tr>";
             }
             out += "</table>";
             document.getElementById("output").innerHTML = out;
             ;
         }
-        function test(i) {
-            var url = "http://202.94.83.190:8080/KopmaBaru/webresources/Barang/getBarang";
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    getList(this.responseText);
-                }
-            }
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-            function getList(response) {
-                var arr = JSON.parse(response);
-                for (i = 0; i < arr.length; i++) {
-                    alert(arr[i].nama);
-                }                
-            }
-        }
+        function halo(idBarang){
+            alert(idBarang);
+        }       
         
     </script>
 </body>

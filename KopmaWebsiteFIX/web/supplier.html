@@ -203,7 +203,7 @@
                 <a href="#" style="color:white" class="btn" onclick="satu()">Tambah Barang</a>
             </div>
             <div class="col">
-                <a href="#" style="color:white" class="btn" onclick="dua()">Update Barang</a>
+                <a href="#" style="color:white" class="btn" onclick="dua()">Kirim Barang</a>
             </div>
         </div>
     </div>
@@ -232,17 +232,14 @@
         <div class="col">
             <form id="update">
                 <div class="hide-md-lg">            
-                </div>  
-                <label><h6 style="text-align:left">ID Barang</h6></label><br>
-                <select id="pilih">
-                </select><br><br>
+                </div>
                 <label><h6 style="text-align:left">Nama Barang</h6></label><br>
                 <input type="text" id="nama" placeholder="Nama Barang"><br>
-                <label><h6 style="text-align:left">Harga Barang</h6></label><br>
-                <input type="text" id="harga" placeholder="Harga Barang"><br>
-                <label><h6 style="text-align:left">Stok Barang</h6></label><br>
-                <input type="text" id="stok" placeholder="Stok Barang"><br><br>
-                <button class="button button1" form="update" onclick="updateBarang()">Update</button>
+                <label><h6 style="text-align:left">Jumlah Kirim</h6></label><br>
+                <input type="text" id="jumlahKirim" placeholder="Stok Barang"><br>
+                <label><h6 style="text-align:left">Tanggal Kirim</h6></label><br>
+                <input type="date" id="tanggal">
+                <button class="button button1" form="update" onclick="kirimBarang()">Kirim Barang</button>
             </form>
         </div>
     </div>
@@ -266,8 +263,8 @@
             var Url = "http://202.94.83.190:8080/KopmaBaru/webresources/Barang/addBarang";
             var xhr = new XMLHttpRequest();
             xhr.open('POST', Url, false);
-            xhr.setRequestHeader("Content-type", "application/json");
             alert();
+            xhr.setRequestHeader("Content-type", "application/json");            
             xhr.send(html);
             return false;
             function alert() {
@@ -275,9 +272,28 @@
             }
         }
 
-        function updateBarang() {
-
+        function kirimBarang() {
+            var json = {
+                "idKirim": "0" + Math.floor(Math.random() * 100),
+                "idBarang": "0" + Math.floor(Math.random() * 100),
+                "namaBarang": form.nama.value,
+                "jumlahKirim": form.jumlahKirim.value,
+                "statusTerima": "Belum diterima",
+                "tanggalKirim": form.tanggal.value
+            };
+            var html = JSON.stringify(json, 0, 100);
+            var Url = "http://202.94.83.190:8080/KopmaBaru/webresources/Barang/addBarang";
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', Url, false);
+            alert();
+            xhr.setRequestHeader("Content-type", "application/json");            
+            xhr.send(html);
+            return false;
+            function alert() {
+                alert("Berhasil Input Data Kirim ke Database");
+            }
         }
+        
         function satu() {
             document.getElementById("tambah").style.display = "block";
             document.getElementById("update").style.display = "none";
@@ -315,37 +331,6 @@
             document.getElementById("barang").innerHTML = out;
             ;
         }
-    </script>
-    <script>
-        let dropdown = document.getElementById('pilih');
-        dropdown.length = 0;
-
-        let defaultOption = document.createElement('option');
-        defaultOption.text = 'Pilih ID Barang';
-
-        dropdown.add(defaultOption);
-        dropdown.selectedIndex = 0;
-        var url = "http://202.94.83.190:8080/KopmaBaru/webresources/Barang/getBarang";
-        const request = new XMLHttpRequest();
-        request.open('GET', url, true);
-        request.onload = function () {
-            if (request.status === 200) {
-                const data = JSON.parse(request.responseText);
-                let option;
-                for (let i = 0; i < data.length; i++) {
-                    option = document.createElement('option');
-                    option.text = data[i].idBarang;
-                    option.value = data[i].nama;
-                    dropdown.add(option);
-                }
-            } else {
-
-            }
-        }
-        request.onerror = function () {
-            console.error('An error occurred fetching the JSON from ' + url);
-        };
-        request.send();
     </script>
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
