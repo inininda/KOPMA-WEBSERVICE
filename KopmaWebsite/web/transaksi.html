@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="img/fav.png">
+        <!-- Author Meta -->
+        <meta name="author" content="CodePixar">
+        <!-- Meta Description -->
+        <meta name="description" content="">
+        <!-- Meta Keyword -->
+        <meta name="keywords" content="">
+        <!-- meta character set -->
+        <meta charset="UTF-8">
+        <!-- Site Title -->
+        <title>Halaman Transaksi - Kopma USD</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
+        <!--
+        CSS
+        ============================================= -->
+        <link rel="stylesheet" href="css/linearicons.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            input[type=text] {
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            #tabel {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            #tabel td, #tabel th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #tabel tr{
+                background-color: #f2f2f2;
+            }
+
+            #tabel tr:hover {background-color: #f2f2f2;}
+
+            #tabel th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+            input,
+            .btn {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 4px;
+                margin: 5px 0;
+                opacity: 0.85;
+                display: inline-block;
+                font-size: 17px;
+                line-height: 20px;
+                text-decoration: none; /* remove underline from anchors */
+            }
+
+            input:hover,
+            .btn:hover {
+                opacity: 1;
+            }
+            
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body onload="checkCookie()">
+    <center>
+        <br>
+        <form id="beliForm" onsubmit="return make_json(this)" method="POST">
+            <table id="tabel">
+                <tr>
+                    <th>ID Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Harga Barang</th>
+                    <th>Tanggal Beli</th>
+                </tr>
+                <tr>
+                    <td id="idBarang"></td>
+                    <td id="nama"></td>
+                    <td id="harga"></td> 
+                    <td id="tanggal">
+                        <script>
+                            var tD = new Date();
+                            var datestr = tD.getFullYear() + "-" + (tD.getMonth() + 1) + "-" + tD.getDate();
+                            document.write(datestr);
+                        </script>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </form>
+    </center>
+    <script>
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function checkCookie() {
+            var idBarang = getCookie("idBarang");
+            var harga = getCookie("harga");
+            if (idBarang != "") {
+                document.getElementById("id").value = idBarang;
+                document.getElementById("domain").value = harga;
+            }
+        }
+    </script>
+</body>
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/main.js"></script>
+</html>

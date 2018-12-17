@@ -15,7 +15,6 @@
         <meta charset="UTF-8">
         <!-- Site Title -->
         <title>Halaman Supplier - Kopma USD</title>
-
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
         <!--
         CSS
@@ -263,7 +262,7 @@
                 "harga": form.harga.value
             };
             var html = JSON.stringify(json, 0, 100);
-            var Url = "http://202.94.83.190:8080/KopmaNew/webresources/Barang/addBarang";
+            var Url = "http://202.94.83.190:8080/KopmaUSD/webresources/Barang/addBarang";
             var xhr = new XMLHttpRequest();
             xhr.open('POST', Url, false);
             xhr.setRequestHeader("Content-type", "application/json");
@@ -287,7 +286,7 @@
             document.getElementById("update").style.display = "block";
         }
 
-        var url = "http://202.94.83.190:8080/KopmaNew/webresources/Barang/getBarang";
+        var url = "http://202.94.83.190:8080/KopmaUSD/webresources/Barang/getBarang";
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -325,7 +324,7 @@
 
         dropdown.add(defaultOption);
         dropdown.selectedIndex = 0;
-        var url = "http://202.94.83.190:8080/KopmaNew/webresources/Barang/getBarang";
+        var url = "http://202.94.83.190:8080/KopmaUSD/webresources/Barang/getBarang";
         const request = new XMLHttpRequest();
         request.open('GET', url, true);
         request.onload = function () {

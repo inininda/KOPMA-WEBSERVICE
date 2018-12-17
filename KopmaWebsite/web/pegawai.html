@@ -30,6 +30,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            input[type=text] {
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
             body {
                 font-family: Arial, Helvetica, sans-serif;
             }
@@ -155,7 +164,7 @@
                 -webkit-transition-duration: 0.4s; /* Safari */
                 transition-duration: 0.4s;
                 cursor: pointer;
-                width: 100%;
+                width: 50%;
             }
             .button1 {
                 background-color: #4CAF50; 
@@ -195,53 +204,22 @@
     </head>
     <body>
     <center>
-        <br>
+        <label>Nama Barang</label><br>
+        <input type="text" id="namaBarang" placeholder="Nama Barang"><br>
+        <button class="button button1" onclick="cari()">Cari Barang</button><br><br><br>
+        <br><br>
         <p id="output"></p>
     </center>
-    <center>
-        <br>
-        <p id="test"></p>
-    </center>
     <div class="bottom-container">
-            <div class="row">
-                <div class="col">
-                    <a href="/" style="color:white" class="btn">Back to Home</a>
-                </div>
+        <div class="row">
+            <div class="col">
+                <a href="/" style="color:white" class="btn">Back to Home</a>
             </div>
         </div>
+    </div>
     <script>
-        var url = "http://202.94.83.190:8080/KopmaNew/webresources/Barang/getBarang";
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                getList(this.responseText);
-            }
-        }
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-        function getList(response) {
-            var arr = JSON.parse(response);
-            var i;
-            var out = "<table id='tabel'>";
-            out += "<tr><th>ID Barang</th>"
-            out += "<th>Nama Barang</th>"
-            out += "<th>Harga Barang</th>"
-            out += "<th>Stok Barang</th>"
-            out += "<th>Beli</th></tr>"
-            for (i = 0; i < arr.length; i++) {
-                out += "<tr><td>" + arr[i].idBarang +
-                        "</td><td>" + arr[i].nama +
-                        "</td><td>Rp" + arr[i].harga +
-                        "</td><td>" + arr[i].stok +
-                        "</td><td><button onclick='test(this)'>Beli</button>" +
-                        "</td></tr>";
-            }
-            out += "</table>";
-            document.getElementById("output").innerHTML = out;
-            ;
-        }
-        function test(i) {
-            var url = "http://202.94.83.190:8080/KopmaNew/webresources/Barang/getBarang";
+        function cari() {
+            var url = "http://202.94.83.190:8080/KopmaUSD/webresources/Barang/cariBarang?nama="+namaBarang.value;
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -252,10 +230,35 @@
             xmlhttp.send();
             function getList(response) {
                 var arr = JSON.parse(response);
-                for (i = 0; i < arr.length; i++) {
-                    alert(arr[i].nama);
-                }                
+                var i;
+                var out = "<table id='tabel'>";
+                out += "<tr><th>ID Barang</th>"
+                out += "<th>Nama Barang</th>"
+                out += "<th>Stok Barang</th>"
+                out += "<th>Harga Barang</th>"
+                out += "<th>Beli</th></tr>"
+                out += "<tr><td>" + arr.idBarang
+                out += "</td><td>" + arr.nama
+                out += "</td><td>" + arr.stok
+                out += "</td><td>" + arr.harga  
+                out += "</td><td><button onclick='beli('" + arr.idBarang + "', '" + arr.nama + "', '" + arr.harga + "')'>Beli</button>"                
+                out += "</table>";
+                document.getElementById("output").innerHTML = out;
+                ;
             }
+        }
+
+        function beli(idBarang, nama, harga) {
+            var myWindow = window.open("transaksi.html", "_self");
+            setCookie("idBarang", idBarang, 1);
+            setCookie("harga", harga, 1);
+            setCookie("nama", nama, 1);
+        }
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
     </script>
 </body>
