@@ -35,9 +35,33 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-            input[type=text] {
+            .button {
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: white;
+                padding: 14px 36px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 17px;
+                margin: 4px 2px;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+                cursor: pointer;
                 width: 50%;
-                padding: 12px 20px;
+            }
+            .button1 {
+                background-color: #4CAF50; 
+                color: white;
+            }
+
+            .button1:hover {
+                background-color: #e7e7e7;
+                color: black;
+            }
+            input[type=text] {
+                width: 100%;
+                padding: 8px;
                 margin: 8px 0;
                 display: inline-block;
                 border: 1px solid #ccc;
@@ -107,22 +131,25 @@ and open the template in the editor.
                     <th>ID Barang</th>
                     <th>Nama Barang</th>
                     <th>Harga Barang</th>
+                    <th>Jumlah Bayar</th>
                     <th>Tanggal Beli</th>
                 </tr>
                 <tr>
-                    <td id="idBarang"></td>
-                    <td id="nama"></td>
-                    <td id="harga"></td> 
-                    <td id="tanggal">
+                    <td><input type="text" id="idBarang" disabled></td>
+                    <td><input type="text" id="nama" disabled></td>
+                    <td><input type="text" id="harga" disabled></td> 
+                    <td><input type="text" id="bayar" disabled></td>
+                    <td>
                         <script>
                             var tD = new Date();
                             var datestr = tD.getFullYear() + "-" + (tD.getMonth() + 1) + "-" + tD.getDate();
-                            document.write(datestr);
+                            document.write("<input type='text' id='tanggal' disabled value='" + datestr + "'>");
                         </script>
                     </td>
                 </tr>
             </table>
             <br>
+            <button type="submit" class="button button1">Confirm</button>
         </form>
     </center>
     <script>
@@ -145,11 +172,30 @@ and open the template in the editor.
             var idBarang = getCookie("idBarang");
             var harga = getCookie("harga");
             var nama = getCookie("nama");
+            var banyaknya = getCookie("banyaknya");
             if (idBarang != "") {
                 document.getElementById("idBarang").value = idBarang;
                 document.getElementById("nama").value = nama;
                 document.getElementById("harga").value = harga;
+                document.getElementById("bayar").value = harga * banyaknya;
             }
+        }
+        function make_json(form) {
+            var json = {
+                "idBarang": form.idBarang.value,
+                "kodeUnik": 'TRX' + form.idBarang.value,
+                "jumlahPembayaran": form.bayar.value,
+                "statusPembayaran": 'Lunas',
+                "tanggalTransaksi": form.tanggal.value
+            };
+            var html = JSON.stringify(json, 0, 100);
+            var Url = "http://202.94.83.190:8080/KopmaUSD/webresources/Transaksi/addTransaksi";
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', Url, false);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(html);
+            alert("Transaksi berhasil dilakukan");
+            return false;
         }
     </script>
 </body>
