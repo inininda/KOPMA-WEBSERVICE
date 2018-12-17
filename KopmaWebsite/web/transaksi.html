@@ -86,7 +86,7 @@ and open the template in the editor.
             .btn:hover {
                 opacity: 1;
             }
-            
+
             input[type=submit] {
                 background-color: #4CAF50;
                 color: white;
@@ -144,9 +144,11 @@ and open the template in the editor.
         function checkCookie() {
             var idBarang = getCookie("idBarang");
             var harga = getCookie("harga");
+            var nama = getCookie("nama");
             if (idBarang != "") {
-                document.getElementById("id").value = idBarang;
-                document.getElementById("domain").value = harga;
+                document.getElementById("idBarang").value = idBarang;
+                document.getElementById("nama").value = nama;
+                document.getElementById("harga").value = harga;
             }
         }
     </script>
