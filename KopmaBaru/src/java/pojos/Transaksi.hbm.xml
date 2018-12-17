@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 6, 2018 10:52:41 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Transaksi" table="Transaksi" catalog="db165314102" optimistic-lock="version">
+        <id name="idBarang" type="string">
+            <column name="idBarang" length="12" />
+            <generator class="assigned" />
+        </id>
+        <property name="kodeUnik" type="string">
+            <column name="kodeUnik" length="12" not-null="true" />
+        </property>
+        <property name="jumlahPembayaran" type="double">
+            <column name="jumlahPembayaran" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="statusPembayaran" type="string">
+            <column name="statusPembayaran" length="12" not-null="true" />
+        </property>
+        <property name="tanggalTransaksi" type="date">
+            <column name="tanggalTransaksi" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

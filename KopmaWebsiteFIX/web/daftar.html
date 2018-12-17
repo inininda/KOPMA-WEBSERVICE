@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="img/fav.png">
+        <!-- Author Meta -->
+        <meta name="author" content="CodePixar">
+        <!-- Meta Description -->
+        <meta name="description" content="">
+        <!-- Meta Keyword -->
+        <meta name="keywords" content="">
+        <!-- meta character set -->
+        <meta charset="UTF-8">
+        <!-- Site Title -->
+        <title>Daftar - Kopma USD</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
+        <!--
+        CSS
+        ============================================= -->
+        <link rel="stylesheet" href="css/linearicons.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            /* style the container */
+            .container {
+                position: relative;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px 0 30px 0;
+            } 
+
+            /* style inputs and link buttons */
+            input,
+            .btn {
+                width: 100%;
+                padding: 12px;
+                border: none;
+                border-radius: 4px;
+                margin: 5px 0;
+                opacity: 0.85;
+                display: inline-block;
+                font-size: 17px;
+                line-height: 20px;
+                text-decoration: none; /* remove underline from anchors */
+            }
+
+            input:hover,
+            .btn:hover {
+                opacity: 1;
+            }
+
+
+            /* style the submit button */
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+            /* Two-column layout */
+            .col {
+                float: left;
+                width: 50%;
+                margin: auto;
+                padding: 0 50px;
+                margin-top: 6px;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* vertical line */
+            .vl {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                border: 2px solid #ddd;
+                height: 240px;
+            }
+
+            /* text inside the vertical line */
+            .vl-innertext {
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #f1f1f1;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                padding: 8px 10px;
+            }
+
+            /* hide some text on medium and large screens */
+            .hide-md-lg {
+                display: none;
+            }
+
+            /* bottom container */
+            .bottom-container {
+                text-align: center;
+                background-color: #666;
+                border-radius: 0px 0px 4px 4px;
+            }
+
+            /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 650px) {
+                .col {
+                    width: 100%;
+                    margin-top: 0;
+                }
+                /* hide the vertical line */
+                .vl {
+                    display: none;
+                }
+                /* show the hidden text on small screens */
+                .hide-md-lg {
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .button {
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: white;
+                padding: 14px 36px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 17px;
+                margin: 4px 2px;
+                -webkit-transition-duration: 0.4s; /* Safari */
+                transition-duration: 0.4s;
+                cursor: pointer;
+                width: 100%;
+            }
+            .button1 {
+                background-color: #4CAF50; 
+                color: white;
+            }
+
+            .button1:hover {
+                background-color: #e7e7e7;
+                color: black;
+            }
+        </style>
+    </head>
+    <body onload="awal()">
+        <div class="bottom-container">
+            <div class="row">
+                <div class="col">
+                    <a href="#" style="color:white" class="btn" onclick="satu()">Daftar Sebagai Pegawai</a>
+                </div>
+                <div class="col">
+                    <a href="#" style="color:white" class="btn" onclick="dua()">Daftar Sebagai Supplier</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            function awal() {
+                document.getElementById("supplier").style.display = "none";
+                document.getElementById("pegawai").style.display = "none";
+            }
+        </script>            
+        <div class="row">
+            <div class="col">
+                <form id="pegawai" onsubmit="return daftarPegawai(this)" method="POST">
+                    <div class="hide-md-lg">            
+                    </div>  
+                    <h6 style="text-align:left">Nama</h6>
+                    <input type="text" id="namaPegawai" placeholder="Nama">
+                    <h6 style="text-align:left">No.Telp</h6>
+                    <input type="text" id="noTelpPegawai" placeholder="No. Telp">
+                    <h6 style="text-align:left">Alamat</h6>
+                    <input type="text" id="alamatPegawai" placeholder="Alamat">
+                    <h6 style="text-align:left">Username</h6>
+                    <input type="text" id="usernamePegawai" placeholder="Username">
+                    <h6 style="text-align:left">Password</h6>
+                    <input type="password" id="passwordPegawai" placeholder="Password">                    
+                    <button class="button button1" form="pegawai">Daftar</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <form id="supplier" onsubmit="return daftarSupplier(this)" method="POST">
+                    <div class="hide-md-lg">            
+                    </div>  
+                    <h6 style="text-align:left">Nama</h6>
+                    <input type="text" id="namaSupplier" placeholder="Nama">
+                    <h6 style="text-align:left">No.Telp</h6>
+                    <input type="text" id="noTelpSupplier" placeholder="No. Telp">
+                    <h6 style="text-align:left">Alamat</h6>
+                    <input type="text" id="alamatSupplier" placeholder="Alamat">
+                    <h6 style="text-align:left">Username</h6>
+                    <input type="text" id="usernameSupplier" placeholder="Username">
+                    <h6 style="text-align:left">Password</h6>
+                    <input type="password" id="passwordSupplier" placeholder="Password">                    
+                    <button class="button button1" form="supplier">Daftar</button>
+                </form>
+            </div>
+        </div>        
+        <div class="bottom-container">
+            <div class="row">
+                <div class="col">
+                    <a href="/" style="color:white" class="btn">Back to Home</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            function satu() {
+                document.getElementById("pegawai").style.display = "block";
+                document.getElementById("supplier").style.display = "none";
+            }
+            function dua() {
+                document.getElementById("pegawai").style.display = "none";
+                document.getElementById("supplier").style.display = "block";
+            }
+            function daftarPegawai(form) {
+                var json = {
+                    "idPegawai": "PG"+Math.floor(Math.random() * 100),
+                    "nama": form.namaPegawai.value,
+                    "noTelp": form.noTelpPegawai.value,
+                    "alamat": form.alamatPegawai.value,
+                    "username": form.usernamePegawai.value,
+                    "password": form.passwordPegawai.value
+                };
+                var html = JSON.stringify(json, 0, 100);
+                var Url = "http://202.94.83.190:8080/KopmaBaru/webresources/Pegawai/addPegawai";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', Url, false);
+                alert();
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);                
+                return false;
+            }            
+            function daftarSupplier(form) {
+                var json = {
+                    "idSupplier": "TK"+Math.floor(Math.random() * 100),
+                    "nama": form.namaSupplier.value,
+                    "noTelp": form.noTelpSupplier.value,
+                    "alamat": form.alamatSupplier.value,
+                    "username": form.usernameSupplier.value,
+                    "password": form.passwordSupplier.value
+                };
+                var html = JSON.stringify(json, 0, 100);
+                var Url = "http://202.94.83.190:8080/KopmaBaru/webresources/Supplier/addSupplier";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', Url, false);
+                alert();
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);
+                return false;
+            }
+        </script>
+        <script>
+            function alert(){
+                alert('Pendaftaran Berhasil, Silahkan Login');
+                var myWindow = window.open("login.html", "_self");
+            }
+        </script>
+        
+        <script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>    
+</html>
